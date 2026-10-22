@@ -23,8 +23,9 @@
 /* Outils secondaires */.beta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.beta-box{padding:17px;background:#f4f8f5;border:1px solid #d8e7dd;border-radius:14px}.beta-box h3{margin:0 0 8px;font-size:17px}.beta-box p{line-height:1.55;font-size:14px}.feedback-form{margin-top:12px}.feedback-form label{display:block;font-size:13px;font-weight:750;margin-top:11px}.feedback-form textarea{resize:vertical}.beta-box button{min-height:44px}@media(max-width:650px){.beta-grid{grid-template-columns:1fr}}
 
 .hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.hero-alt{display:inline-flex;align-items:center;border:1px solid #aecfc0;padding:12px 18px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;min-height:47px}.hero-alt:hover{background:#ffffff18}.utility-panel{background:#f8faf8}.utility-panel details summary{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;cursor:pointer;font-size:18px;font-weight:800;list-style:none}.utility-panel details summary::-webkit-details-marker{display:none}.utility-panel details summary:after{content:'＋';font-size:22px;color:#236f4a}.utility-panel details[open] summary:after{content:'−'}.summary-sub{color:#63796d;font-weight:400;font-size:12px}.utility-body{margin-top:20px}.utility-body .support-grid{display:grid;gap:12px}.utility-body .feedback-form{background:#f4f8f5;border:1px solid #d8e7dd;padding:17px;border-radius:14px}.utility-panel :focus-visible{outline:3px solid #dca63f;outline-offset:3px}@media(max-width:620px){.utility-panel details summary{align-items:flex-start}.summary-sub{width:100%}.hero-actions>*{width:100%;justify-content:center;text-align:center}}
+.app-update-banner{position:sticky;top:0;z-index:100;background:#e7f5e9;border:2px solid #26734b;border-radius:14px;padding:13px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 3px 16px #193b281c;margin-bottom:15px}.app-update-banner[hidden]{display:none!important}.app-update-banner span{font-size:14px;color:#17472f;font-weight:650}.app-update-banner button{background:#166849;color:#fff;border:0;border-radius:9px;padding:11px 15px;font-weight:750;min-height:44px}@media(max-width:530px){.app-update-banner button{width:100%}}
 </style></head>
-<body><main class="app"><header><div><div class="logo">🇮🇹 Italiano Facile</div><div class="subtitle">L'italien, pas à pas et en français</div></div><div class="flag">🇫🇷</div></header><div class="hero"><span class="pill">Du niveau A1 au niveau C2</span><h1>Parle italien dès aujourd'hui.</h1><p>48 cours A1–C2, test de positionnement, textes oraux, écoute active, exercices corrigés, XP et révisions.</p><div class="hero-actions"><button class="primary" id="startBtn">Je débute en italien →</button><a class="hero-alt" href="#placement">Évaluer mon niveau</a></div></div>
+<body><main class="app"><div id="appUpdateBanner" class="app-update-banner" role="status" aria-live="polite" hidden><span>Une nouvelle version d’Italiano Facile est disponible. Tes scores et ta progression seront conservés.</span><button type="button" id="applyAppUpdate">Mettre à jour</button></div><header><div><div class="logo">🇮🇹 Italiano Facile</div><div class="subtitle">L'italien, pas à pas et en français</div></div><div class="flag">🇫🇷</div></header><div class="hero"><span class="pill">Du niveau A1 au niveau C2</span><h1>Parle italien dès aujourd'hui.</h1><p>48 cours A1–C2, test de positionnement, textes oraux, écoute active, exercices corrigés, XP et révisions.</p><div class="hero-actions"><button class="primary" id="startBtn">Je débute en italien →</button><a class="hero-alt" href="#placement">Évaluer mon niveau</a></div></div>
 <section class="panel" id="placement" aria-label="Test de positionnement"><div class="placement-intro"><div><h2 style="margin:0 0 5px">🎯 Trouve ton point de départ</h2><p style="margin:0">18 questions, 3 par niveau A1–C2. Test indicatif, sans frais.</p></div><button class="primary" id="placementStart">Commencer le test</button></div><div id="placementArea" class="hidden" aria-live="polite"></div><div id="placementSummary" aria-live="polite"></div></section>
 <section class="dashboard" aria-label="Tableau de bord"><div class="metric"><strong id="xpTotal">0</strong><span>Points XP</span></div><div class="metric"><strong id="streak">0</strong><span>Jours consécutifs</span></div><div class="metric"><strong id="dailyProgress">0/20</strong><span>XP aujourd'hui</span></div></section><section class="panel" id="daily"><h2>Ton objectif quotidien</h2><div class="goal-area"><label for="dailyGoal">Objectif XP :</label><select id="dailyGoal" class="practice-entry" style="width:auto"><option value="10">10 XP</option><option value="20">20 XP</option><option value="30">30 XP</option><option value="50">50 XP</option></select><span class="small-text" id="goalStatus"></span></div><div class="progressbar" aria-label="Objectif quotidien"><div id="dailyFill" style="width:0%"></div></div><div class="buttons"><button id="resumeBtn" class="primary">Reprendre ma dernière leçon</button></div></section><section class="panel" id="revision"><h2>Réviser mes erreurs</h2><p>Les questions ratées au quiz sont conservées sur cet appareil et reviennent en révision.</p><div id="reviewRoot" class="review-list"></div></section><section id="lessons"><h2>Choisis ton niveau</h2><div class="levels" id="levelTabs" aria-label="Niveaux de langue"></div><p class="muted" id="levelInfo"></p><div class="course-grid" id="courseGrid"></div></section>
 <section class="panel" id="unitReviewArea" aria-label="Bilan d’unité"></section><section class="panel hidden" id="lesson"><h3 id="lessonTitle"></h3><p id="lessonDesc"></p><div class="vocab" id="vocab"></div><div id="deepCourse" class="deep-course"></div><div class="buttons"><button class="primary" id="quizBtn">Faire le quiz →</button><button class="secondary" id="closeBtn">Retour aux leçons</button></div></section>
@@ -387,8 +388,47 @@ const $beta=id=>document.getElementById(id);
 let installPrompt=null;
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;$beta('installApp').hidden=false;});
 $beta('installApp').addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;$beta('installApp').hidden=true;});
-if('serviceWorker' in navigator && /^https?:$/.test(location.protocol)){
- window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+// Vérification des mises à jour sans effacer les données des apprenants.
+if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+ let refreshing = false;
+ const banner = document.getElementById('appUpdateBanner');
+ const activateBtn = document.getElementById('applyAppUpdate');
+ let waitingWorker = null;
+ const offerUpdate = (worker) => {
+   if (!worker || !navigator.serviceWorker.controller) return;
+   waitingWorker = worker;
+   banner.hidden = false;
+ };
+ activateBtn.addEventListener('click', () => {
+   if (waitingWorker) {
+     activateBtn.disabled = true;
+     activateBtn.textContent = 'Mise à jour en cours…';
+     waitingWorker.postMessage({type:'SKIP_WAITING'});
+   } else { location.reload(); }
+ });
+ navigator.serviceWorker.addEventListener('controllerchange', () => {
+   if (!refreshing && waitingWorker) {
+     refreshing = true;
+     location.reload();
+   }
+ });
+ window.addEventListener('load', async () => {
+   try {
+     const reg = await navigator.serviceWorker.register('./sw.js', {updateViaCache:'none'});
+     if (reg.waiting) offerUpdate(reg.waiting);
+     reg.addEventListener('updatefound', () => {
+       const incoming = reg.installing;
+       if (!incoming) return;
+       incoming.addEventListener('statechange', () => {
+         if (incoming.state === 'installed') offerUpdate(reg.waiting || incoming);
+       });
+     });
+     reg.update().catch(()=>{});
+     document.addEventListener('visibilitychange', () => {
+       if (!document.hidden) reg.update().catch(()=>{});
+     });
+   } catch(e) { /* Le site reste utilisable sans Service Worker. */ }
+ });
 }
 const keys=['italiano-facile-progress-v1','italiano-facile-placement-v1','italiano-facile-units-v12'];
 // Discover legacy and new keys by prefix so that XP, streak and review data are included.
