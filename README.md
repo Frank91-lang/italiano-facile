@@ -1,20 +1,11 @@
-# Italiano Facile v1.3 — bêta web installable
+# Italiano Facile — version 1.4
 
-48 cours A1–C2 issus de v1.2, test de positionnement, quiz, XP, révisions, dialogues et synthèse vocale.
+Version destinée aux apprenants : la page d’accueil propose « Je débute en italien » et « Évaluer mon niveau ». Les outils de sauvegarde, d’installation et de commentaires sont repliés en bas de page, dans « Paramètres, installation et aide ».
 
-## Nouveautés
-- Manifest et icônes permettant une installation de type PWA dans les navigateurs compatibles.
-- Service worker pour garder en cache les fichiers statiques après une première visite en ligne.
-- Export/import JSON des données locales (scores et progression).
-- Formulaire de retour, à copier ou exporter en TXT sans transmettre automatiquement de données.
+## Publication sur GitHub Pages
 
-## Essayer
-Ouvrir `index.html` pour un test local. Pour installer la PWA et activer son cache, publier **tous les fichiers ensemble** sous HTTPS (ex. GitHub Pages).
+Dans le dépôt `Frank91-lang/italiano-facile`, remplacer `index.html` et `sw.js` par les fichiers de ce ZIP. Les autres fichiers peuvent rester en place, ou être téléversés avec eux. Confirmer les modifications ; le site sera redéployé automatiquement. Rechargez la page (Ctrl+F5 si nécessaire).
 
-## Publication gratuite de démonstration
-1. Créer un dépôt public GitHub nommé `italiano-facile`.
-2. Charger les cinq fichiers du dossier à la racine.
-3. Settings > Pages > Deploy from a branch > main > / (root) > Save.
-4. Ouvrir l'URL affichée par GitHub Pages et partager ce lien aux testeurs.
+## Compatibilité
 
-Attention : le dépôt public rend le code et les contenus visibles. GitHub Pages ne doit pas servir d'infrastructure de paiement ou de traitement de données sensibles. Les résultats demeurent uniquement dans le navigateur et sont distincts selon chaque origine/adresse. Après installation et une visite en ligne réussie, les ressources statiques sont disponibles hors ligne, mais la qualité de la synthèse vocale peut dépendre de l'appareil. Aucun formulaire ne remonte automatiquement les retours au développeur. Ne pas effacer le stockage avant d'avoir exporté les résultats.
+48 cours A1-C2, progression, XP, quiz, révisions et test de positionnement conservés. La clé locale utilisée pour les scores n'a pas été modifiée. Les avis ne sont pas transmis automatiquement. La sauvegarde reste locale.
