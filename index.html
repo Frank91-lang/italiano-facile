@@ -24,8 +24,19 @@
 
 .hero-actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.hero-alt{display:inline-flex;align-items:center;border:1px solid #aecfc0;padding:12px 18px;border-radius:12px;color:#fff;text-decoration:none;font-weight:700;min-height:47px}.hero-alt:hover{background:#ffffff18}.utility-panel{background:#f8faf8}.utility-panel details summary{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap;cursor:pointer;font-size:18px;font-weight:800;list-style:none}.utility-panel details summary::-webkit-details-marker{display:none}.utility-panel details summary:after{content:'＋';font-size:22px;color:#236f4a}.utility-panel details[open] summary:after{content:'−'}.summary-sub{color:#63796d;font-weight:400;font-size:12px}.utility-body{margin-top:20px}.utility-body .support-grid{display:grid;gap:12px}.utility-body .feedback-form{background:#f4f8f5;border:1px solid #d8e7dd;padding:17px;border-radius:14px}.utility-panel :focus-visible{outline:3px solid #dca63f;outline-offset:3px}@media(max-width:620px){.utility-panel details summary{align-items:flex-start}.summary-sub{width:100%}.hero-actions>*{width:100%;justify-content:center;text-align:center}}
 .app-update-banner{position:sticky;top:0;z-index:100;background:#e7f5e9;border:2px solid #26734b;border-radius:14px;padding:13px 16px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;box-shadow:0 3px 16px #193b281c;margin-bottom:15px}.app-update-banner[hidden]{display:none!important}.app-update-banner span{font-size:14px;color:#17472f;font-weight:650}.app-update-banner button{background:#166849;color:#fff;border:0;border-radius:9px;padding:11px 15px;font-weight:750;min-height:44px}@media(max-width:530px){.app-update-banner button{width:100%}}
+
+
+/* Navigation principale v1.6 */
+.main-nav{position:sticky;top:0;z-index:50;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;padding:10px 0;background:#eef3efeF;backdrop-filter:blur(12px);margin:0 0 18px}
+.main-nav button{border:1px solid #c5dbcc;border-radius:12px;background:#fff;color:#245640;font-weight:750;min-height:48px;padding:9px 5px;line-height:1.25}
+.main-nav button[aria-current="page"]{background:#166849;color:#fff;border-color:#166849}
+.view-hidden{display:none!important}
+.view-title{margin:12px 0 6px;font-size:clamp(23px,4vw,30px)}
+.settings-intro{margin:0 0 18px;color:#5b7568}
+#resetBtn{margin-top:12px}
+@media(max-width:520px){.main-nav{gap:5px}.main-nav button{font-size:12px;padding:8px 3px}.app{padding-bottom:35px}}
 </style></head>
-<body><main class="app"><div id="appUpdateBanner" class="app-update-banner" role="status" aria-live="polite" hidden><span>Une nouvelle version d’Italiano Facile est disponible. Tes scores et ta progression seront conservés.</span><button type="button" id="applyAppUpdate">Mettre à jour</button></div><header><div><div class="logo">🇮🇹 Italiano Facile</div><div class="subtitle">L'italien, pas à pas et en français</div></div><div class="flag">🇫🇷</div></header><div class="hero"><span class="pill">Du niveau A1 au niveau C2</span><h1>Parle italien dès aujourd'hui.</h1><p>48 cours A1–C2, test de positionnement, textes oraux, écoute active, exercices corrigés, XP et révisions.</p><div class="hero-actions"><button class="primary" id="startBtn">Je débute en italien →</button><a class="hero-alt" href="#placement">Évaluer mon niveau</a></div></div>
+<body><main class="app"><div id="appUpdateBanner" class="app-update-banner" role="status" aria-live="polite" hidden><span>Une nouvelle version d’Italiano Facile est disponible. Tes scores et ta progression seront conservés.</span><button type="button" id="applyAppUpdate">Mettre à jour</button></div><header><div><div class="logo">🇮🇹 Italiano Facile</div><div class="subtitle">L'italien, pas à pas et en français</div></div><div class="flag">🇫🇷</div></header><nav class="main-nav" aria-label="Navigation principale"><button type="button" data-view="home" aria-current="page">Accueil</button><button type="button" data-view="courses">Mes cours</button><button type="button" data-view="progress">Ma progression</button><button type="button" data-view="settings">Paramètres</button></nav><div class="hero"><span class="pill">Du niveau A1 au niveau C2</span><h1>Parle italien dès aujourd'hui.</h1><p>48 cours A1–C2, test de positionnement, textes oraux, écoute active, exercices corrigés, XP et révisions.</p><div class="hero-actions"><button class="primary" id="startBtn">Je débute en italien →</button><a class="hero-alt" href="#placement">Évaluer mon niveau</a></div></div>
 <section class="panel" id="placement" aria-label="Test de positionnement"><div class="placement-intro"><div><h2 style="margin:0 0 5px">🎯 Trouve ton point de départ</h2><p style="margin:0">18 questions, 3 par niveau A1–C2. Test indicatif, sans frais.</p></div><button class="primary" id="placementStart">Commencer le test</button></div><div id="placementArea" class="hidden" aria-live="polite"></div><div id="placementSummary" aria-live="polite"></div></section>
 <section class="dashboard" aria-label="Tableau de bord"><div class="metric"><strong id="xpTotal">0</strong><span>Points XP</span></div><div class="metric"><strong id="streak">0</strong><span>Jours consécutifs</span></div><div class="metric"><strong id="dailyProgress">0/20</strong><span>XP aujourd'hui</span></div></section><section class="panel" id="daily"><h2>Ton objectif quotidien</h2><div class="goal-area"><label for="dailyGoal">Objectif XP :</label><select id="dailyGoal" class="practice-entry" style="width:auto"><option value="10">10 XP</option><option value="20">20 XP</option><option value="30">30 XP</option><option value="50">50 XP</option></select><span class="small-text" id="goalStatus"></span></div><div class="progressbar" aria-label="Objectif quotidien"><div id="dailyFill" style="width:0%"></div></div><div class="buttons"><button id="resumeBtn" class="primary">Reprendre ma dernière leçon</button></div></section><section class="panel" id="revision"><h2>Réviser mes erreurs</h2><p>Les questions ratées au quiz sont conservées sur cet appareil et reviennent en révision.</p><div id="reviewRoot" class="review-list"></div></section><section id="lessons"><h2>Choisis ton niveau</h2><div class="levels" id="levelTabs" aria-label="Niveaux de langue"></div><p class="muted" id="levelInfo"></p><div class="course-grid" id="courseGrid"></div></section>
 <section class="panel" id="unitReviewArea" aria-label="Bilan d’unité"></section><section class="panel hidden" id="lesson"><h3 id="lessonTitle"></h3><p id="lessonDesc"></p><div class="vocab" id="vocab"></div><div id="deepCourse" class="deep-course"></div><div class="buttons"><button class="primary" id="quizBtn">Faire le quiz →</button><button class="secondary" id="closeBtn">Retour aux leçons</button></div></section>
@@ -459,4 +470,42 @@ function message(){const msg=$beta('feedbackText').value.trim();if(msg.length<10
 $beta('copyFeedback').onclick=async()=>{const m=message();if(!m)return;try{await navigator.clipboard.writeText(m);$beta('feedbackStatus').textContent='Copié ! Tu peux maintenant coller ton retour dans un message.';}catch(e){$beta('feedbackStatus').textContent='Copie indisponible ici. Utilise le téléchargement du fichier texte.';}};
 $beta('downloadFeedback').onclick=()=>{const m=message();if(!m)return;downloadBlob('retour-italiano-facile.txt',m,'text/plain;charset=utf-8');$beta('feedbackStatus').textContent='Fichier texte téléchargé, prêt à être transmis.';};
 })();
-</script></body></html>
+</script>
+<script>
+/* Italiano Facile v1.6 : navigation sans modifier les clés de sauvegarde */
+(function(){
+ const views={
+  home:['.hero','#placement'],
+  courses:['#lessons','#unitReviewArea','#lesson','#quiz'],
+  progress:['.dashboard','#daily','#revision','#progress'],
+  settings:['#aide']
+ };
+ const nav=document.querySelector('.main-nav');
+ const all=Object.values(views).flat().map(sel=>document.querySelector(sel)).filter(Boolean);
+ const settings=document.querySelector('#aide');
+ const panel=settings?.querySelector('details');
+ if(panel){panel.open=true;const reset=document.querySelector('#resetBtn');const body=panel.querySelector('.utility-body');if(reset&&body){const holder=document.createElement('div');holder.className='practice-card';const label=document.createElement('h3');label.textContent='Gestion des données';holder.append(label,reset);body.append(holder);}}
+ const titles={home:'Accueil',courses:'Mes cours',progress:'Ma progression',settings:'Paramètres'};
+ const header=document.createElement('h1');header.className='view-title';header.id='viewHeading';header.tabIndex=-1;header.hidden=true;nav.after(header);
+ const introduction=document.createElement('p');introduction.className='settings-intro';introduction.textContent='Retrouve ici l’installation, tes sauvegardes et l’assistance.';settings?.prepend(introduction);
+ function show(view,scroll=true){
+  if(!views[view])view='home';
+  all.forEach(el=>el.classList.add('view-hidden'));
+  views[view].forEach(sel=>{const el=document.querySelector(sel);if(el)el.classList.remove('view-hidden')});
+  nav.querySelectorAll('button').forEach(b=>{if(b.dataset.view===view)b.setAttribute('aria-current','page');else b.removeAttribute('aria-current')});
+  header.hidden=view==='home';header.textContent=titles[view];
+  if(scroll)window.scrollTo({top:0,behavior:'instant'});
+ }
+ nav.addEventListener('click',e=>{const b=e.target.closest('[data-view]');if(b)show(b.dataset.view)});
+ // Les actions déjà présentes basculent vers la rubrique correspondante.
+ const start=document.getElementById('startBtn');if(start)start.addEventListener('click',()=>show('courses'));
+ const resume=document.getElementById('resumeBtn');if(resume)resume.addEventListener('click',()=>show('courses',false));
+ document.querySelector('.hero-alt')?.addEventListener('click',e=>{e.preventDefault();show('home',false);document.getElementById('placement')?.scrollIntoView({behavior:'smooth'})});
+ const goToLessons=document.getElementById('placementSummary');
+ goToLessons?.addEventListener('click',e=>{if(e.target.closest('button'))setTimeout(()=>show('courses',false),0)});
+ document.getElementById('closeBtn')?.addEventListener('click',()=>show('courses',false));
+ document.getElementById('quitBtn')?.addEventListener('click',()=>show('courses',false));
+ show('home',false);
+})();
+</script>
+</body></html>

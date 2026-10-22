@@ -1,5 +1,5 @@
 // Italiano Facile — cache d'éléments statiques versionné
-const CACHE = 'italiano-facile-v1.5-static';
+const CACHE = 'italiano-facile-v1.6-static';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)));

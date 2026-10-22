@@ -1,12 +1,9 @@
-# Italiano Facile v1.5 — mise à jour automatique guidée
+# Italiano Facile 1.6 — navigation claire
 
-48 cours A1–C2 et fonctionnalités de la v1.4 conservés.
+Quatre rubriques : Accueil, Mes cours, Ma progression, Paramètres. Les 48 cours A1–C2, les XP, la sauvegarde locale et les activités de la v1.5 sont conservés. Le cache du service worker porte maintenant la version v1.6.
 
-## Mise à jour du site
-Importez les fichiers à la racine du même dépôt GitHub. L’application vérifie le Service Worker lors de l’ouverture et du retour à l’onglet, puis affiche un bandeau quand une nouvelle version est installée en attente. L’apprenant peut cliquer sur « Mettre à jour ».
+## Mettre à jour GitHub Pages
+Téléverser les six fichiers à la racine du dépôt existant et valider les changements. Ne pas importer le ZIP lui-même. Le site GitHub Pages actuel conserve son URL.
 
-Le cache d’éléments statiques passe à `italiano-facile-v1.5-static`. Les anciens caches de cette application sont supprimés à l’activation, sans toucher à `localStorage` qui conserve les XP, leçons, scores et révisions.
-
-Pour les *futures* versions, changer la valeur `CACHE` dans `sw.js` à chaque déploiement modifiant des ressources.
-
-Remarque : lors de la toute première migration depuis la v1.4, certains anciens navigateurs peuvent encore avoir besoin d’un rechargement avant que le nouveau système de mise à jour prenne le relais.
+## Remarque
+Les données restent sur le même navigateur tant que l’utilisateur ne vide pas les données du site. La correction de la navigation est distincte de la validation pédagogique des cours.
